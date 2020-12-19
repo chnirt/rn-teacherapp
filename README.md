@@ -1,1 +1,1 @@
-# rn-techerapp
+# rn-teacherapp
