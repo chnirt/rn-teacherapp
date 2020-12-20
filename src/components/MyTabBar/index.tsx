@@ -9,8 +9,8 @@ import {HomeSVG, TasksSVG, ClassRoomSVG, ChatSVG} from './svgs';
 const TAB_BAR_OFFSET = 130;
 
 export const MyTabBar = ({state, descriptors, navigation}) => {
-  const offset = useRef(new Animated.Value(0)).current;
-  const opacity = useRef(new Animated.Value(0)).current;
+  const translateYAmin = useRef(new Animated.Value(0)).current;
+  const fadeAmin = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
@@ -25,12 +25,12 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
   useEffect(() => {
     if (tabBarVisible) {
       Animated.parallel([
-        Animated.timing(offset, {
+        Animated.timing(translateYAmin, {
           toValue: 0,
           duration: 500,
           useNativeDriver: false,
         }),
-        Animated.timing(opacity, {
+        Animated.timing(fadeAmin, {
           toValue: 1,
           duration: 500,
           useNativeDriver: false,
@@ -41,18 +41,18 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
     }
 
     Animated.parallel([
-      Animated.timing(offset, {
+      Animated.timing(translateYAmin, {
         toValue: -TAB_BAR_OFFSET,
         duration: 500,
         useNativeDriver: false,
       }),
-      Animated.timing(opacity, {
+      Animated.timing(fadeAmin, {
         toValue: 0,
         duration: 500,
         useNativeDriver: false,
       }),
     ]).start();
-  }, [offset, opacity, tabBarVisible]);
+  }, [translateYAmin, fadeAmin, tabBarVisible]);
 
   // if (focusedOptions.tabBarVisible === false) {
   //   return null;
@@ -62,7 +62,7 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
     <Animated.View
       style={[
         styles.container,
-        {bottom: offset, opacity},
+        {bottom: translateYAmin, opacity: fadeAmin},
         {paddingBottom: Math.max(insets.bottom, 16)},
       ]}>
       <View style={styles.tabBarContainer}>
