@@ -6,7 +6,7 @@ import {PRIMARY_COLOR} from '../../constants';
 import {styles} from './styles';
 import {HomeSVG, TasksSVG, ClassRoomSVG, ChatSVG} from './svgs';
 
-const TAB_BAR_OFFSET = 110;
+const TAB_BAR_OFFSET = 130;
 
 export const MyTabBar = ({state, descriptors, navigation}) => {
   const offset = useRef(new Animated.Value(0)).current;
@@ -110,7 +110,7 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
               onLongPress={onLongPress}
               style={styles.tabBarItem}>
               {renderTabIcon(index)}
-              <Text style={{color}}>{label}</Text>
+              <Text style={[styles.tabBarText, {color}]}>{label}</Text>
             </TouchableOpacity>
           );
         })}

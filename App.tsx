@@ -13,6 +13,7 @@ import React from 'react';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {HomeScreen} from './src/screens';
 import {MyTabBar} from './src/components';
@@ -21,7 +22,7 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: '#212223',
+    background: '#fff',
   },
 };
 
@@ -42,11 +43,13 @@ const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="MyTabs" component={MyTabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer theme={MyTheme}>
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="MyTabs" component={MyTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

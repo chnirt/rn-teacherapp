@@ -1,5 +1,8 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
 import {PRIMARY_COLOR} from '../../constants';
+
+const windowWidth = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,7 +14,7 @@ export const styles = StyleSheet.create({
   },
   tabBarContainer: {
     flexDirection: 'row',
-    height: 80,
+    height: (windowWidth - 32) / 4,
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#212223',
@@ -35,6 +38,7 @@ export const styles = StyleSheet.create({
   },
   tabBarText: {
     color: '#DCDCDD',
+    marginTop: 10,
   },
   tabBarFocusText: {
     color: '#673ab7',
