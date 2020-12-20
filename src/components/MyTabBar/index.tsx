@@ -10,6 +10,7 @@ const TAB_BAR_OFFSET = 130;
 
 export const MyTabBar = ({state, descriptors, navigation}) => {
   const offset = useRef(new Animated.Value(0)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
@@ -23,20 +24,35 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
 
   useEffect(() => {
     if (tabBarVisible) {
-      Animated.timing(offset, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: false,
-      }).start();
+      Animated.parallel([
+        Animated.timing(offset, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: false,
+        }),
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: false,
+        }),
+      ]).start();
+
       return;
     }
 
-    Animated.timing(offset, {
-      toValue: -TAB_BAR_OFFSET,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-  }, [offset, tabBarVisible]);
+    Animated.parallel([
+      Animated.timing(offset, {
+        toValue: -TAB_BAR_OFFSET,
+        duration: 500,
+        useNativeDriver: false,
+      }),
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: false,
+      }),
+    ]).start();
+  }, [offset, opacity, tabBarVisible]);
 
   // if (focusedOptions.tabBarVisible === false) {
   //   return null;
@@ -46,7 +62,7 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
     <Animated.View
       style={[
         styles.container,
-        {bottom: offset},
+        {bottom: offset, opacity},
         {paddingBottom: Math.max(insets.bottom, 16)},
       ]}>
       <View style={styles.tabBarContainer}>
