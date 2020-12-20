@@ -10,29 +10,20 @@
 
 import 'react-native-gesture-handler';
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 import {HomeScreen} from './src/screens';
 import {MyTabBar} from './src/components';
 
-declare const global: {HermesInternal: null | {}};
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#212223',
+  },
+};
 
 const Tab = createBottomTabNavigator();
 
@@ -51,7 +42,7 @@ const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="MyTabs" component={MyTabs} />
       </Stack.Navigator>

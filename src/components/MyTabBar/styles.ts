@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {PRIMARY_COLOR} from '../../constants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -6,8 +7,7 @@ export const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    padding: 16,
-    paddingBottom: 20,
+    paddingHorizontal: 16,
   },
   tabBarContainer: {
     flexDirection: 'row',
@@ -17,6 +17,16 @@ export const styles = StyleSheet.create({
     backgroundColor: '#212223',
     opacity: 0.9,
     borderRadius: 15,
+
+    shadowColor: PRIMARY_COLOR,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
   tabBarItem: {
     flex: 1,

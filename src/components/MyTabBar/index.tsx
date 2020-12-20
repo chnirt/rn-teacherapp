@@ -1,13 +1,17 @@
 import React, {useEffect, useRef} from 'react';
 import {View, Text, Animated, TouchableOpacity} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {PRIMARY_COLOR} from '../../constants';
 
 import {styles} from './styles';
 import {HomeSVG, TasksSVG, ClassRoomSVG, ChatSVG} from './svgs';
 
-const TAB_BAR_OFFSET = 100;
+const TAB_BAR_OFFSET = 110;
 
 export const MyTabBar = ({state, descriptors, navigation}) => {
   const offset = useRef(new Animated.Value(0)).current;
+  const insets = useSafeAreaInsets();
+
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   const tabBarVisible =
@@ -39,7 +43,12 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
   // }
 
   return (
-    <Animated.View style={[styles.container, {bottom: offset}]}>
+    <Animated.View
+      style={[
+        styles.container,
+        {bottom: offset},
+        {paddingBottom: Math.max(insets.bottom, 16)},
+      ]}>
       <View style={styles.tabBarContainer}>
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
@@ -73,7 +82,7 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
             });
           };
 
-          const color = isFocused ? '#9254de' : '#DCDCDD';
+          const color = isFocused ? PRIMARY_COLOR : '#DCDCDD';
 
           const renderTabIcon = (index) => {
             switch (index) {
