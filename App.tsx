@@ -15,7 +15,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {HomeScreen} from './src/screens';
+import {HomeScreen, TasksScreen} from './src/screens';
 import {MyTabBar} from './src/components';
 
 const MyTheme = {
@@ -32,7 +32,7 @@ function MyTabs() {
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Tasks" component={HomeScreen} />
+      <Tab.Screen name="Tasks" component={TasksScreen} />
       <Tab.Screen name="Classroom" component={HomeScreen} />
       <Tab.Screen name="Chat" component={HomeScreen} />
     </Tab.Navigator>

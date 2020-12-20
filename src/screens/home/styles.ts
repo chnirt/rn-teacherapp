@@ -5,11 +5,11 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 32,
+    paddingTop: 16,
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 16,
   },
   leftHeaderContainer: {},
   avatarContainer: {
@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 10,
   },
-  greetingText: {color: '#9e9ea7', fontSize: 16, fontWeight: '400'},
+  greetingText: {color: '#9e9ea7', fontSize: 16, fontWeight: 'normal'},
   greetingText1Container: {
     marginTop: 15,
   },

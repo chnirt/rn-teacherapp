@@ -33,7 +33,7 @@ const DATA = [
 const DATA2 = [
   {
     id: uuidv4(),
-    title: 'First Item',
+    title: 'English',
     subTitle: 'Chapter6: Force',
     createdAt: '19:30',
     createdBy: {
@@ -45,7 +45,7 @@ const DATA2 = [
   },
   {
     id: uuidv4(),
-    title: 'Second Item',
+    title: 'Art',
     subTitle: 'Chapter5: Force',
     createdAt: '13:15',
     createdBy: {
@@ -57,7 +57,7 @@ const DATA2 = [
   },
   {
     id: uuidv4(),
-    title: 'Third Item',
+    title: 'Music',
     subTitle: 'Chapter4: Force',
     createdAt: '12:45',
     createdBy: {

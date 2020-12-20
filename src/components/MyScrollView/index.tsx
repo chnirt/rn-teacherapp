@@ -21,18 +21,14 @@ export const MyScrollView = ({children}) => {
 
   const handleOnScroll = () => navigation.setOptions({tabBarVisible: false});
 
-  const handleOnScrollEndDrag = () =>
-    navigation.setOptions({tabBarVisible: true});
-
-  const handleOnMomentumScrollEnd = () =>
-    navigation.setOptions({tabBarVisible: true});
+  const handleOnStopScroll = () => navigation.setOptions({tabBarVisible: true});
 
   return (
     <ScrollView
       scrollEventThrottle={16}
       onScroll={handleOnScroll}
-      onScrollEndDrag={handleOnScrollEndDrag}
-      onMomentumScrollEnd={handleOnMomentumScrollEnd}>
+      onScrollEndDrag={handleOnStopScroll}
+      onMomentumScrollEnd={handleOnStopScroll}>
       {/* {images.length > 0 &&
         images?.map((image, index) => (
           <Image
