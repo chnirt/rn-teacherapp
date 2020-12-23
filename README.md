@@ -21,3 +21,5 @@
 - How can i create a transparent background in react navigation 5.x?: https://stackoverflow.com/questions/60981356/how-can-i-create-a-transparent-background-in-react-navigation-5-x
 
 - Free Amazing Illustrations Library for Your Project: https://www.lapa.ninja/blog/free-illustrations-library-for-your-project/
+
+- How reset tab history in Tabs on tab click using ReactNavigation 5?: https://stackoverflow.com/questions/61073534/how-reset-tab-history-in-tabs-on-tab-click-using-reactnavigation-5

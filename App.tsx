@@ -15,7 +15,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {HomeScreen, TasksScreen} from './src/screens';
+import {HomeScreen, TasksScreen, CreateTaskScreen} from './src/screens';
 import {MyTabBar} from './src/components';
 
 const MyTheme = {
@@ -26,20 +26,35 @@ const MyTheme = {
   },
 };
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const TasksStack = createStackNavigator();
 
-function MyTabs() {
+const TasksStackScreen = () => {
+  return (
+    <TasksStack.Navigator headerMode="none">
+      <TasksStack.Screen name="Tasks" component={TasksScreen} />
+      <TasksStack.Screen name="CreateTask" component={CreateTaskScreen} />
+    </TasksStack.Navigator>
+  );
+};
+
+const MyTabs = () => {
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Tasks" component={TasksScreen} />
+      <Tab.Screen
+        options={{
+          unmountOnBlur: true,
+        }}
+        name="Tasks"
+        component={TasksStackScreen}
+      />
       <Tab.Screen name="Classroom" component={HomeScreen} />
       <Tab.Screen name="Chat" component={HomeScreen} />
     </Tab.Navigator>
   );
-}
-
-const Stack = createStackNavigator();
+};
 
 const App = () => {
   return (

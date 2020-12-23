@@ -90,6 +90,8 @@ export const TasksScreen = () => {
 
   const handleOnStopScroll = () => navigation.setOptions({tabBarVisible: true});
 
+  const navigateCreateTask = () => navigation.navigate('CreateTask');
+
   const renderTaskItem = ({item}) => (
     <View style={styles.taskItem}>
       <View style={styles.leftColumnContainer}>
@@ -147,7 +149,7 @@ export const TasksScreen = () => {
             </View>
           </View>
           <View style={styles.rightHeaderContainer}>
-            <MyButton />
+            <MyButton title={'+ Add Task'} onPress={navigateCreateTask} />
           </View>
         </View>
 
@@ -189,7 +191,7 @@ export const TasksScreen = () => {
             contentContainerStyle={{
               paddingBottom: Math.max(insets.bottom, 16) + bottomTabHeight,
             }}
-            data={DATA2.concat(DATA2)}
+            data={DATA2}
             renderItem={renderTaskItem}
             keyExtractor={(item, index) => `${item.id}` + index}
             showsVerticalScrollIndicator={false}

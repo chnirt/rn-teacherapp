@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Pressable} from 'react-native';
 
 import {styles} from './styles';
 
@@ -8,10 +8,11 @@ export const MyShadow = ({
   color = '#000',
   backgroundColor = '#fff',
   size = 1,
+  onPress = () => {},
   children,
 }) => {
   return (
-    <View
+    <Pressable
       style={[
         styles.box,
         styles.depth10,
@@ -27,8 +28,9 @@ export const MyShadow = ({
         size === 9 ? styles.depth9 : null,
         size === 10 ? styles.depth10 : null,
         style,
-      ]}>
+      ]}
+      onPress={onPress}>
       {children}
-    </View>
+    </Pressable>
   );
 };
