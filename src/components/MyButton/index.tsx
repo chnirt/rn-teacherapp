@@ -6,10 +6,10 @@ import {MyShadow} from '../MyShadow';
 
 import {styles} from './styles';
 
-export const MyButton = ({title = '', onPress = () => {}}) => {
+export const MyButton = ({title = '', onPress = () => {}, style}) => {
   return (
     <MyShadow
-      style={styles.buttonContainer}
+      style={[styles.buttonContainer, style]}
       color={PRIMARY_COLOR}
       size={10}
       onPress={onPress}>
