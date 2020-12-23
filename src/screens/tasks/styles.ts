@@ -48,18 +48,11 @@ export const styles = StyleSheet.create({
   },
   tasksFlatList: {marginTop: 30},
   taskItem: {
-    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    // borderColor: 'red',
-    // borderWidth: 1,
+    marginBottom: 10,
   },
-  timeItem: {
-    flex: 5,
-    alignItems: 'stretch',
-    marginBottom: 20,
-    // backgroundColor: 'green',
+  leftColumnContainer: {
+    flex: 4,
   },
   startTimeText: {
     color: '#000',
@@ -74,18 +67,64 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'normal',
   },
-  dividerItem: {
+  dividerContainer: {
+    alignItems: 'center',
+  },
+  dot: {
+    backgroundColor: '#fff',
+    width: 10,
+    height: 10,
+    borderRadius: 10 / 2,
+    borderColor: PRIMARY_COLOR,
+    borderWidth: 1,
+  },
+  divider: {
     flex: 1,
     borderRightColor: PRIMARY_COLOR,
     borderRightWidth: 2,
-    height: 100,
-    marginHorizontal: 5,
+  },
+  rightColumnContainer: {
+    flex: 15,
   },
   dateTaskItem: {
-    flex: 15,
     borderRadius: 15,
     marginTop: 0,
     marginRight: 0,
     padding: 20,
+  },
+  headerDateTaskItem: {flexDirection: 'row', justifyContent: 'space-between'},
+  dateTaskText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  bodyDateTaskItem: {
+    marginTop: 5,
+  },
+  descriptionDateTaskText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  footerDateTaskItem: {
+    marginTop: 10,
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  rowContainerAvatar: {
+    width: 15,
+    height: 15,
+    borderRadius: 15 / 2,
+    borderColor: '#fff',
+    borderWidth: 1,
+  },
+  rowContainerText: {
+    marginLeft: 10,
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
   },
 });

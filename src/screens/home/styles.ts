@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {PRIMARY_COLOR} from '../../constants';
+
 export const styles = StyleSheet.create({
   safeArea: {flex: 1},
   container: {
@@ -58,12 +60,12 @@ export const styles = StyleSheet.create({
     marginTop: 15,
   },
   greetingText2: {
-    color: '#49b583',
+    color: PRIMARY_COLOR,
     fontSize: 24,
     fontWeight: 'bold',
   },
   courseContainer: {
-    marginTop: 60,
+    marginTop: 50,
   },
   courseTitleText: {
     color: '#000',
@@ -80,7 +82,7 @@ export const styles = StyleSheet.create({
   },
   courseItem: {
     width: 135,
-    height: 120,
+    minHeight: 120,
     marginRight: 20,
     borderRadius: 15,
     justifyContent: 'flex-end',
@@ -92,6 +94,9 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  courseFlatList: {
+    marginTop: 10,
   },
   scheduleContainer: {
     marginTop: 30,
@@ -110,7 +115,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   scheduleTaskFlatList: {
-    marginTop: 20,
+    marginTop: 10,
   },
   scheduleTaskItem: {
     width: 300,
@@ -134,7 +139,7 @@ export const styles = StyleSheet.create({
   },
   descriptionScheduleTaskText: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
   },
   footerScheduleTaskItem: {
@@ -149,11 +154,13 @@ export const styles = StyleSheet.create({
     width: 15,
     height: 15,
     borderRadius: 15 / 2,
+    borderColor: '#fff',
+    borderWidth: 1,
   },
   rowContainerText: {
     marginLeft: 10,
     color: '#fff',
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
   },
 });

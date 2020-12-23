@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
   useWindowDimensions,
+  Image,
 } from 'react-native';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
@@ -13,6 +14,7 @@ import {styles} from './styles';
 import {MyButton, MyShadow} from '../../components';
 import {firstLastDayOfWeek, datesFromFirst2Last, uuidv4} from '../../utils';
 import {WEEKDAY} from '../../constants';
+import {MenuSVG, ClockSVG} from './svgs';
 
 const DATA2 = [
   {
@@ -90,24 +92,47 @@ export const TasksScreen = () => {
 
   const renderTaskItem = ({item}) => (
     <View style={styles.taskItem}>
-      <View style={styles.timeItem}>
+      <View style={styles.leftColumnContainer}>
         <Text style={styles.startTimeText}>{item?.createdAt}</Text>
         <View style={styles.endTimeContainer}>
           <Text style={styles.endTimeText}>{item?.createdAt}</Text>
         </View>
       </View>
-      <View style={styles.dividerItem}></View>
-      <MyShadow
-        style={styles.dateTaskItem}
-        size={10}
-        color={item?.color}
-        backgroundColor={item?.color}>
-        <Text style={styles.courseContentText}>{item?.title}</Text>
-        <Text style={styles.courseContentText}>{item?.title}</Text>
-        <Text style={styles.courseContentText}>{item?.title}</Text>
-        <Text style={styles.courseContentText}>{item?.title}</Text>
-        <Text style={styles.courseContentText}>{item?.title}</Text>
-      </MyShadow>
+      <View style={styles.dividerContainer}>
+        <View style={styles.dot} />
+        <View style={styles.divider} />
+      </View>
+      <View style={styles.rightColumnContainer}>
+        <MyShadow
+          style={styles.dateTaskItem}
+          size={10}
+          color={item?.color}
+          backgroundColor={item?.color}>
+          <View style={styles.headerDateTaskItem}>
+            <Text style={styles.dateTaskText}>{item?.title}</Text>
+            <MenuSVG color="#fff" />
+          </View>
+          <View style={styles.bodyDateTaskItem}>
+            <Text style={styles.descriptionDateTaskText}>{item?.subTitle}</Text>
+          </View>
+          <View style={styles.footerDateTaskItem}>
+            <View style={styles.rowContainer}>
+              <ClockSVG width={15} height={15} color="#fff" />
+              <Text style={styles.rowContainerText}>{item?.createdAt}</Text>
+            </View>
+
+            <View style={styles.rowContainer}>
+              <Image
+                style={styles.rowContainerAvatar}
+                source={{uri: item?.createdBy?.url}}
+              />
+              <Text style={styles.rowContainerText}>
+                {item?.createdBy?.name}
+              </Text>
+            </View>
+          </View>
+        </MyShadow>
+      </View>
     </View>
   );
 
