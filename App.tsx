@@ -15,7 +15,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {HomeScreen, TasksScreen, CreateTaskScreen} from './src/screens';
+import {
+  HomeScreen,
+  TasksScreen,
+  CreateTaskScreen,
+  ClassScreen,
+} from './src/screens';
 import {MyTabBar} from './src/components';
 
 const MyTheme = {
@@ -41,8 +46,16 @@ const TasksStackScreen = () => {
 
 const MyTabs = () => {
   return (
-    <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Navigator
+      initialRouteName="Classroom"
+      tabBar={(props) => <MyTabBar {...props} />}>
+      <Tab.Screen
+        options={{
+          unmountOnBlur: true,
+        }}
+        name="Home"
+        component={HomeScreen}
+      />
       <Tab.Screen
         options={{
           unmountOnBlur: true,
@@ -50,7 +63,7 @@ const MyTabs = () => {
         name="Tasks"
         component={TasksStackScreen}
       />
-      <Tab.Screen name="Classroom" component={HomeScreen} />
+      <Tab.Screen name="Classroom" component={ClassScreen} />
       <Tab.Screen name="Chat" component={HomeScreen} />
     </Tab.Navigator>
   );
