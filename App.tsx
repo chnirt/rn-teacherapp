@@ -14,12 +14,14 @@ import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {RecoilRoot} from 'recoil';
 
 import {
   HomeScreen,
   TasksScreen,
   CreateTaskScreen,
   ClassScreen,
+  OnBoardingScreen,
 } from './src/screens';
 import {MyTabBar} from './src/components';
 
@@ -72,11 +74,14 @@ const MyTabs = () => {
 const App = () => {
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen name="MyTabs" component={MyTabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <RecoilRoot>
+        <NavigationContainer theme={MyTheme}>
+          <Stack.Navigator headerMode="none">
+            <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
+            <Stack.Screen name="MyTabs" component={MyTabs} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </RecoilRoot>
     </SafeAreaProvider>
   );
 };

@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#212223',
     opacity: 0.9,
-    borderRadius: 15,
+    borderRadius: 25,
 
     shadowColor: PRIMARY_COLOR,
     shadowOffset: {

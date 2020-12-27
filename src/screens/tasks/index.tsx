@@ -9,12 +9,14 @@ import {
 } from 'react-native';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
+import {useSetRecoilState} from 'recoil';
 
 import {styles} from './styles';
 import {MyButton, MyShadow} from '../../components';
 import {firstLastDayOfWeek, datesFromFirst2Last, uuidv4} from '../../utils';
 import {WEEKDAY} from '../../constants';
 import {MenuSVG, ClockSVG} from './svgs';
+import {tabBarVisibleState} from '../../atoms';
 
 const DATA2 = [
   {
@@ -74,6 +76,7 @@ export const TasksScreen = () => {
   const insets = useSafeAreaInsets();
   const windowWidth = useWindowDimensions().width;
   const bottomTabHeight = (windowWidth - 32) / 4 + 32 + 120;
+  const setTabBarVisible = useSetRecoilState(tabBarVisibleState);
 
   const [selectedDay, setSelectedDay] = useState(now);
   const {firstDay, lastDay} = firstLastDayOfWeek({
@@ -86,9 +89,9 @@ export const TasksScreen = () => {
     setSelectedDay(date);
   };
 
-  const handleOnScroll = () => navigation.setOptions({tabBarVisible: false});
+  const handleOnScroll = () => setTabBarVisible(false);
 
-  const handleOnStopScroll = () => navigation.setOptions({tabBarVisible: true});
+  const handleOnStopScroll = () => setTabBarVisible(true);
 
   const navigateCreateTask = () => navigation.navigate('CreateTask');
 

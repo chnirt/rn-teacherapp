@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Image, ScrollView, useWindowDimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useSetRecoilState} from 'recoil';
+
 import {styles} from './styles';
+import {tabBarVisibleState} from '../../atoms';
 
 export const MyScrollView = ({children}) => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
+  const setTabBarVisible = useSetRecoilState(tabBarVisibleState);
 
   // const windowWidth = useWindowDimensions().width;
 
@@ -19,9 +23,9 @@ export const MyScrollView = ({children}) => {
   //     .catch((error) => console.log(error));
   // }, []);
 
-  const handleOnScroll = () => navigation.setOptions({tabBarVisible: false});
+  const handleOnScroll = () => setTabBarVisible(false);
 
-  const handleOnStopScroll = () => navigation.setOptions({tabBarVisible: true});
+  const handleOnStopScroll = () => setTabBarVisible(true);
 
   return (
     <ScrollView

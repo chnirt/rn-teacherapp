@@ -49,11 +49,11 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   subjectsContainer: {
-    marginTop: 65,
+    marginTop: 25 + 40,
   },
   subjectsText: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   bodySubjectsContainer: {
@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'normal',
   },
   rowContainer: {
-    marginTop: 20,
+    marginTop: 25,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -88,6 +88,7 @@ export const styles = StyleSheet.create({
     color: '#000',
   },
   boxContainer: {
+    marginRight: 25,
     width: 40,
     height: 40,
     borderRadius: 15 / 2,
@@ -96,7 +97,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 15,
   },
   valueText: {
     color: '#000',
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'normal',
   },
   buttonContainer: {
-    marginTop: 20,
+    marginTop: 25,
   },
   addButton: {marginHorizontal: 0},
 });
