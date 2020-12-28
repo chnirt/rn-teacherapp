@@ -9,8 +9,8 @@ import {
   Animated,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  Pressable,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 
 import {styles} from './styles';
@@ -61,7 +61,7 @@ export const OnBoardingScreen = () => {
   const windowHeight = useWindowDimensions().height;
   const navigation = useNavigation();
 
-  const handleSkip = () => navigation.navigate('MyTabs');
+  const handleSkip = () => navigation.navigate('Login');
 
   const handleNext = () => {
     if (index === DATA?.length - 1) {
@@ -94,7 +94,8 @@ export const OnBoardingScreen = () => {
           },
         ]}
         source={{uri: item?.uri}}
-        imageStyle={styles.imageStyle}>
+        imageStyle={styles.imageStyle}
+        resizeMode="cover">
         <Text style={styles.titleText}>{item?.title}</Text>
         <Text style={styles.subTitleText} numberOfLines={3}>
           {item?.subTitle}
@@ -172,14 +173,14 @@ export const OnBoardingScreen = () => {
             );
           })}
         </View>
-        <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
+        <Pressable style={styles.skipButton} onPress={handleSkip}>
           <Text style={styles.skipText}>Skip</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
       <View style={styles.footerContainer}>
-        <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+        <Pressable style={styles.nextButton} onPress={handleNext}>
           <ArrowSVG color="#fff" />
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );

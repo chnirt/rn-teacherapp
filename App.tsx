@@ -17,11 +17,12 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RecoilRoot} from 'recoil';
 
 import {
+  OnBoardingScreen,
+  LoginScreen,
   HomeScreen,
   TasksScreen,
   CreateTaskScreen,
   ClassScreen,
-  OnBoardingScreen,
 } from './src/screens';
 import {MyTabBar} from './src/components';
 
@@ -49,7 +50,7 @@ const TasksStackScreen = () => {
 const MyTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Classroom"
+      // initialRouteName="Classroom"
       tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen
         options={{
@@ -78,6 +79,7 @@ const App = () => {
         <NavigationContainer theme={MyTheme}>
           <Stack.Navigator headerMode="none">
             <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="MyTabs" component={MyTabs} />
           </Stack.Navigator>
         </NavigationContainer>

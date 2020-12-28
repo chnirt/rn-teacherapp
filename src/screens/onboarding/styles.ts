@@ -35,11 +35,10 @@ export const styles = StyleSheet.create({
   skipText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: 'bold',
     textAlign: 'right',
   },
   pageContainer: {
-    flex: 1,
-    resizeMode: 'cover',
     paddingVertical: 32 * 4,
     paddingHorizontal: 32,
     backgroundColor: '#FF0040',
