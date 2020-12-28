@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   leftHeaderContainer: {flex: 1, justifyContent: 'space-between'},
   dateTodayText: {color: '#9e9ea7', fontSize: 16, fontWeight: 'normal'},
   todayContainer: {
-    marginTop: 10,
+    // marginTop: 10,
   },
   todayText: {
     color: '#000',

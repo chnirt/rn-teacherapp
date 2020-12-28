@@ -8,7 +8,9 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "xcode": "xed -b ios"
+    "xcode": "xed -b ios",
+    "as": "open -a Android\\ Studio \"$(pwd)/android\"",
+    "fix:a": "export ANDROID_HOME=~/Library/Android/sdk"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
