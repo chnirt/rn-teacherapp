@@ -1,12 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {styles} from './styles';
-import {MyText} from '../../components/MyText';
-import {MyTextInput, MyButton} from '../../components';
+import {MyTextInput, MyButton, MyText} from '../../components';
 import {PRIMARY_COLOR} from '../../constants';
+import {FacebookSVG, GoogleSVG} from './svgs';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -46,6 +46,7 @@ export const LoginScreen = () => {
             </View>
             <View style={[styles.formItem, styles.socialButtons]}>
               <MyButton
+                opacity={0.2}
                 color={PRIMARY_COLOR}
                 title="LOGIN"
                 onPress={navigateHome}
@@ -57,11 +58,18 @@ export const LoginScreen = () => {
             </View>
             <View style={[styles.formItem, styles.socialButtons]}>
               <MyButton
+                icon={<GoogleSVG />}
+                opacity={0.2}
                 style={styles.leftButton}
                 color="#E68481"
                 title="Google"
               />
-              <MyButton color="#3D579D" title="Facebook" />
+              <MyButton
+                icon={<FacebookSVG />}
+                opacity={0.2}
+                color="#3D579D"
+                title="Facebook"
+              />
             </View>
           </View>
         </View>

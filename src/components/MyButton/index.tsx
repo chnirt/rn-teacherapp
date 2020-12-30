@@ -7,6 +7,7 @@ import {MyShadow} from '../MyShadow';
 import {styles} from './styles';
 
 export const MyButton = ({
+  icon,
   title = '',
   onPress = () => {},
   style,
@@ -25,6 +26,7 @@ export const MyButton = ({
       color={color}
       size={10}
       onPress={onPress}>
+      {icon && <View style={styles.iconContainer}>{icon}</View>}
       <Text
         style={[
           styles.buttonText,

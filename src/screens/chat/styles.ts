@@ -33,7 +33,6 @@ export const styles = StyleSheet.create({
   },
   flatListView: {
     marginBottom: 140,
-    // backgroundColor: 'red',
   },
   inputContainer: {
     flexDirection: 'row',
