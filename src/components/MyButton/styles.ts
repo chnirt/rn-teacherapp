@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: PRIMARY_COLOR,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
     marginHorizontal: 0,
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
-  centered: {
-    textAlign: 'center',
+  left: {
+    textAlign: 'left',
   },
 });
