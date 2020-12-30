@@ -15,7 +15,6 @@ export const MyShadow = ({
     <Pressable
       style={[
         styles.box,
-        styles.depth10,
         {shadowColor: color, backgroundColor},
         size === 1 ? styles.depth1 : null,
         size === 2 ? styles.depth2 : null,

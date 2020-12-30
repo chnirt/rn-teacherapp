@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {PRIMARY_COLOR} from '../../constants';
+
 const DOT_SIZE = 6;
 
 export const styles = StyleSheet.create({
@@ -41,7 +43,7 @@ export const styles = StyleSheet.create({
   pageContainer: {
     paddingVertical: 32 * 4,
     paddingHorizontal: 32,
-    backgroundColor: '#FF0040',
+    backgroundColor: PRIMARY_COLOR,
   },
   imageStyle: {opacity: 0.9},
   titleText: {

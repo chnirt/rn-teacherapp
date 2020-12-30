@@ -9,6 +9,7 @@ export const MyTextInput = ({
   icon,
   placeholder = '',
   placeholderTextColor = '',
+  secureTextEntry,
   style,
 }) => {
   const textInputRef = useRef();
@@ -18,15 +19,16 @@ export const MyTextInput = ({
   };
 
   return (
-    <Pressable style={styles.container} onPress={handlePress}>
+    <Pressable style={[styles.container, style]} onPress={handlePress}>
       {icon && <View style={styles.iconContainer}>{icon()}</View>}
       <TextInput
         ref={textInputRef}
-        style={[styles.valueText, style]}
+        style={styles.valueText}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
+        secureTextEntry={secureTextEntry}
       />
     </Pressable>
   );

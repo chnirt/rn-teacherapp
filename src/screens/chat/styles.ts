@@ -31,6 +31,10 @@ export const styles = StyleSheet.create({
   iconContainer: {
     marginRight: 20,
   },
+  flatListView: {
+    marginBottom: 140,
+    // backgroundColor: 'red',
+  },
   inputContainer: {
     flexDirection: 'row',
     bottom: 120,

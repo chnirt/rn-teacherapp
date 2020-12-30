@@ -20,6 +20,8 @@
 
 - https://www.lipsum.com/
 
+- https://material.io/resources/color/#!/?view.left=0&view.right=0
+
 ### Following:
 
 - Onboarding: https://dribbble.com/shots/13927301-Food-Delivery-Mobile-App
@@ -31,3 +33,5 @@
 - Free Amazing Illustrations Library for Your Project: https://www.lapa.ninja/blog/free-illustrations-library-for-your-project/
 
 - How reset tab history in Tabs on tab click using ReactNavigation 5?: https://stackoverflow.com/questions/61073534/how-reset-tab-history-in-tabs-on-tab-click-using-reactnavigation-5
+
+- react-native style opacity for parent and child: https://stackoverflow.com/questions/36147082/react-native-style-opacity-for-parent-and-child
