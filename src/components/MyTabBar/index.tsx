@@ -1,26 +1,30 @@
 import React, {useEffect, useRef} from 'react';
 import {View, Text, Animated, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {PRIMARY_COLOR} from '../../constants';
+import {useRecoilState} from 'recoil';
 
 import {styles} from './styles';
+import {PRIMARY_COLOR} from '../../constants';
 import {HomeSVG, TasksSVG, ClassRoomSVG, ChatSVG} from './svgs';
+import {tabBarVisibleState} from '../../atoms';
 
 const TAB_BAR_OFFSET = 130;
 
 export const MyTabBar = ({state, descriptors, navigation}) => {
+  const [tabBarVisible, setTabBarVisible] = useRecoilState(tabBarVisibleState);
+
   const translateYAmin = useRef(new Animated.Value(0)).current;
   const fadeAmin = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
 
-  const focusedOptions = descriptors[state.routes[state.index].key].options;
+  // const focusedOptions = descriptors[state.routes[state.index].key].options;
 
-  const tabBarVisible =
-    focusedOptions?.tabBarVisible === 'undefined'
-      ? true
-      : focusedOptions?.tabBarVisible === false
-      ? false
-      : true;
+  // const tabBarVisible =
+  //   focusedOptions?.tabBarVisible === 'undefined'
+  //     ? true
+  //     : focusedOptions?.tabBarVisible === false
+  //     ? false
+  //     : true;
 
   useEffect(() => {
     if (tabBarVisible) {
@@ -78,7 +82,8 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
           const isFocused = state.index === index;
 
           const onPress = () => {
-            navigation.setOptions({tabBarVisible: true});
+            // navigation.setOptions({tabBarVisible: true});
+            setTabBarVisible(true);
 
             const event = navigation.emit({
               type: 'tabPress',
@@ -126,7 +131,7 @@ export const MyTabBar = ({state, descriptors, navigation}) => {
               onLongPress={onLongPress}
               style={styles.tabBarItem}>
               {renderTabIcon(index)}
-              <Text style={[styles.tabBarText, {color}]}>{label}</Text>
+              {/* <Text style={[styles.tabBarText, {color}]}>{label}</Text> */}
             </TouchableOpacity>
           );
         })}

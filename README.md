@@ -16,6 +16,14 @@
 
 - https://www.graphicpear.com/school-icons/
 
+- https://www.flaticon.com/authors/bqlqn/lineal
+
+- https://www.lipsum.com/
+
+### Following:
+
+- Onboarding: https://dribbble.com/shots/13927301-Food-Delivery-Mobile-App
+
 ### See more:
 
 - How can i create a transparent background in react navigation 5.x?: https://stackoverflow.com/questions/60981356/how-can-i-create-a-transparent-background-in-react-navigation-5-x

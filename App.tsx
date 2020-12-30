@@ -14,12 +14,16 @@ import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {RecoilRoot} from 'recoil';
 
 import {
   HomeScreen,
   TasksScreen,
   CreateTaskScreen,
   ChatScreen,
+  OnBoardingScreen,
+  LoginScreen,
+  ClassScreen,
 } from './src/screens';
 import {MyTabBar} from './src/components';
 
@@ -46,7 +50,9 @@ const TasksStackScreen = () => {
 
 const MyTabs = () => {
   return (
-    <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+    <Tab.Navigator
+      // initialRouteName="Classroom"
+      tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen
         options={{
           unmountOnBlur: true,
@@ -61,7 +67,7 @@ const MyTabs = () => {
         name="Tasks"
         component={TasksStackScreen}
       />
-      <Tab.Screen name="Classroom" component={HomeScreen} />
+      <Tab.Screen name="Classroom" component={ClassScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
     </Tab.Navigator>
   );
@@ -70,11 +76,15 @@ const MyTabs = () => {
 const App = () => {
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen name="MyTabs" component={MyTabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <RecoilRoot>
+        <NavigationContainer theme={MyTheme}>
+          <Stack.Navigator headerMode="none">
+            <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="MyTabs" component={MyTabs} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </RecoilRoot>
     </SafeAreaProvider>
   );
 };

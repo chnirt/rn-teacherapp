@@ -5,28 +5,39 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 import {MyScrollView, MyShadow} from '../../components';
 import {uuidv4} from '../../utils';
-import {ClockSVG, MenuSVG} from './svgs';
+import {
+  ClockSVG,
+  MenuSVG,
+  CalculatorSVG,
+  ChemistrySVG,
+  DnaSVG,
+  BookSVG,
+} from './svgs';
 
 const DATA = [
   {
     id: uuidv4(),
     title: 'Mathematics',
     color: '#49b583',
+    icon: <CalculatorSVG color="#fff" />,
   },
   {
     id: uuidv4(),
     title: 'Science',
     color: '#ff4171',
+    icon: <ChemistrySVG color="#fff" />,
   },
   {
     id: uuidv4(),
-    title: 'Social Studies',
+    title: 'Biology',
     color: '#ffbd69',
+    icon: <DnaSVG color="#fff" />,
   },
   {
     id: uuidv4(),
     title: 'Foreign Languages',
     color: '#7f86ff',
+    icon: <BookSVG color="#fff" />,
   },
 ];
 
@@ -88,7 +99,10 @@ export const HomeScreen = () => {
       size={10}
       color={item?.color}
       backgroundColor={item?.color}>
-      <Text style={styles.courseContentText}>{item?.title}</Text>
+      <View style={styles.courseContentIcon}>{item?.icon}</View>
+      <View style={styles.courseContentTextContainer}>
+        <Text style={styles.courseContentText}>{item?.title}</Text>
+      </View>
     </MyShadow>
   );
 

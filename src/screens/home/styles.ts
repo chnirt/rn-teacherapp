@@ -85,10 +85,12 @@ export const styles = StyleSheet.create({
     minHeight: 120,
     marginRight: 20,
     borderRadius: 15,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  courseContentIcon: {},
+  courseContentTextContainer: {},
   courseContentText: {
     color: '#fff',
     fontSize: 14,
