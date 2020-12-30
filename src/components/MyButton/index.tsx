@@ -32,6 +32,10 @@ export const MyButton = ({
           styles.buttonText,
           bold && styles.bold,
           color ? {color} : null,
+          icon ? styles.centered : null,
+          {
+            textAlign: 'center',
+          },
         ]}>
         {title}
       </Text>
