@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: 'row',
-    // backgroundColor: 'red',
   },
   leftHeaderContainer: {flex: 1, justifyContent: 'space-between'},
   discussText: {color: '#9e9ea7', fontSize: 16, fontWeight: 'normal'},

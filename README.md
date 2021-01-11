@@ -24,6 +24,8 @@
 
 - https://icons8.com/
 
+- https://icons8.com/illustrations/illustration/gummy-ux-slash-ui-design
+
 ### Following:
 
 - Onboarding: https://dribbble.com/shots/13927301-Food-Delivery-Mobile-App

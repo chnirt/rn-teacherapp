@@ -1,15 +1,9 @@
 import {StyleSheet} from 'react-native';
-
 import {PRIMARY_COLOR} from '../../constants';
 
 export const styles = StyleSheet.create({
   safeArea: {flex: 1},
-  container: {
-    flex: 1,
-    paddingHorizontal: 32,
-    paddingVertical: 16,
-    justifyContent: 'space-between',
-  },
+  container: {flex: 1, paddingHorizontal: 32, paddingTop: 16},
   header: {},
   text: {
     backgroundColor: '#fff',
@@ -28,13 +22,4 @@ export const styles = StyleSheet.create({
     marginTop: 50,
   },
   formItem: {marginBottom: 50 / 2},
-  socialButtons: {flexDirection: 'row'},
-  leftButton: {
-    marginRight: 10,
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  signUpContainer: {paddingHorizontal: 10},
 });

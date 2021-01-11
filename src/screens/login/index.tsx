@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {styles} from './styles';
@@ -16,6 +16,8 @@ export const LoginScreen = () => {
 
   const navigateHome = () => navigation.navigate('MyTabs');
 
+  const navigateRegister = () => navigation.navigate('Register');
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -26,7 +28,7 @@ export const LoginScreen = () => {
               <MyTextInput
                 value={email}
                 onChangeText={setEmail}
-                style={styles.emailText}
+                style={styles.text}
                 placeholder="Email"
                 placeholderTextColor="#d3d3d3"
               />
@@ -35,7 +37,7 @@ export const LoginScreen = () => {
               <MyTextInput
                 value={pwd}
                 onChangeText={setPwd}
-                style={styles.emailText}
+                style={styles.text}
                 placeholder="Password"
                 placeholderTextColor="#d3d3d3"
                 secureTextEntry
@@ -74,7 +76,12 @@ export const LoginScreen = () => {
           </View>
         </View>
         <View style={styles.footer}>
-          <MyText title="Don't have an account? SIGN UP" centered />
+          <MyText title="Don't have an account?" centered />
+          <TouchableOpacity
+            style={styles.signUpContainer}
+            onPress={navigateRegister}>
+            <MyText title="SIGN UP" />
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

@@ -23,6 +23,7 @@ import {
   ChatScreen,
   OnBoardingScreen,
   LoginScreen,
+  RegisterScreen,
   ClassScreen,
 } from './src/screens';
 import {MyTabBar} from './src/components';
@@ -81,6 +82,7 @@ const App = () => {
           <Stack.Navigator headerMode="none">
             <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen} />
             <Stack.Screen name="MyTabs" component={MyTabs} />
           </Stack.Navigator>
         </NavigationContainer>
