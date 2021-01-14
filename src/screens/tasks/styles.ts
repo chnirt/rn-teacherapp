@@ -85,6 +85,7 @@ export const styles = StyleSheet.create({
   },
   rightColumnContainer: {
     flex: 15,
+    padding: 10,
   },
   dateTaskItem: {
     borderRadius: 15,
