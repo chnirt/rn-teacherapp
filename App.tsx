@@ -27,6 +27,7 @@ import {
   ClassScreen,
 } from './src/screens';
 import {MyTabBar} from './src/components';
+import { AxiosProvider } from './src/services';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -78,14 +79,16 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <RecoilRoot>
-        <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator headerMode="none">
-            <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-            <Stack.Screen name="MyTabs" component={MyTabs} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <AxiosProvider>
+          <NavigationContainer theme={MyTheme}>
+            <Stack.Navigator headerMode="none">
+              <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
+              <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen name="Register" component={RegisterScreen} />
+              <Stack.Screen name="MyTabs" component={MyTabs} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </AxiosProvider>
       </RecoilRoot>
     </SafeAreaProvider>
   );

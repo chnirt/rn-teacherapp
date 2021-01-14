@@ -14,6 +14,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 import {uuidv4} from '../../utils';
 import {WinterHatSVG} from './svgs';
+import { getClassList } from '../../services';
 
 export const ClassScreen = () => {
   const [messages, setMessages] = useState([]);

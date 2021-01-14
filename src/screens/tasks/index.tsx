@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -9,14 +9,15 @@ import {
 } from 'react-native';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
-import {useSetRecoilState} from 'recoil';
+import {useSetRecoilState, useRecoilState} from 'recoil';
 
 import {styles} from './styles';
 import {MyButton, MyShadow} from '../../components';
-import {firstLastDayOfWeek, datesFromFirst2Last, uuidv4} from '../../utils';
+import {firstLastDayOfWeek, datesFromFirst2Last, uuidv4, convertDDMM} from '../../utils';
 import {WEEKDAY} from '../../constants';
 import {MenuSVG, ClockSVG} from './svgs';
-import {tabBarVisibleState} from '../../atoms';
+import {tabBarVisibleState, taskListState} from '../../atoms';
+import { getTaskList } from '../../services';
 
 const DATA2 = [
   {
@@ -77,6 +78,7 @@ export const TasksScreen = () => {
   const windowWidth = useWindowDimensions().width;
   const bottomTabHeight = (windowWidth - 32) / 4 + 32 + 120;
   const setTabBarVisible = useSetRecoilState(tabBarVisibleState);
+  const [taskList, setTaskList] = useRecoilState(taskListState)
 
   const [selectedDay, setSelectedDay] = useState(now);
   const {firstDay, lastDay} = firstLastDayOfWeek({
@@ -89,57 +91,73 @@ export const TasksScreen = () => {
     setSelectedDay(date);
   };
 
+  const fetchClassList = async() => {
+    const data = await getTaskList(1);
+    data && setTaskList(data)
+  }
+
+  useEffect(() => {
+    fetchClassList()
+  }, [])
+
+  useEffect(() => {
+    console.log(taskList)
+  }, [taskList])
+
   const handleOnScroll = () => setTabBarVisible(false);
 
   const handleOnStopScroll = () => setTabBarVisible(true);
 
   const navigateCreateTask = () => navigation.navigate('CreateTask');
 
-  const renderTaskItem = ({item}) => (
-    <View style={styles.taskItem}>
-      <View style={styles.leftColumnContainer}>
-        <Text style={styles.startTimeText}>{item?.createdAt}</Text>
-        <View style={styles.endTimeContainer}>
-          <Text style={styles.endTimeText}>{item?.createdAt}</Text>
+  const renderTaskItem = ({item}) => {
+    console.log(item.note)
+    return(
+      <View style={styles.taskItem}>
+        <View style={styles.leftColumnContainer}>
+          <Text style={styles.startTimeText}>{convertDDMM(item?.created_at)}</Text>
+          <View style={styles.endTimeContainer}>
+            <Text style={styles.endTimeText}>{convertDDMM(item?.created_at)}</Text>
+          </View>
+        </View>
+        <View style={styles.dividerContainer}>
+          <View style={styles.dot} />
+          <View style={styles.divider} />
+        </View>
+        <View style={styles.rightColumnContainer}>
+          <MyShadow
+            style={styles.dateTaskItem}
+            size={10}
+            color={'#7f86ff'}
+            backgroundColor={'#7f86ff'}>
+            <View style={styles.headerDateTaskItem}>
+              <Text style={styles.dateTaskText}>Title</Text>
+              <MenuSVG color="#fff" />
+            </View>
+            <View style={styles.bodyDateTaskItem}>
+              <Text style={styles.descriptionDateTaskText}>{item?.note}</Text>
+            </View>
+            <View style={styles.footerDateTaskItem}>
+              <View style={styles.rowContainer}>
+                <ClockSVG width={15} height={15} color="#fff" />
+                <Text style={styles.rowContainerText}>{convertDDMM(item?.created_at)}</Text>
+              </View>
+
+              <View style={styles.rowContainer}>
+                {/* <Image
+                  style={styles.rowContainerAvatar}
+                  source={{uri: item?.createdBy?.url}}
+                /> */}
+                {/* <Text style={styles.rowContainerText}>
+                  {item?.createdBy?.name}
+                </Text> */}
+              </View>
+            </View>
+          </MyShadow>
         </View>
       </View>
-      <View style={styles.dividerContainer}>
-        <View style={styles.dot} />
-        <View style={styles.divider} />
-      </View>
-      <View style={styles.rightColumnContainer}>
-        <MyShadow
-          style={styles.dateTaskItem}
-          size={10}
-          color={item?.color}
-          backgroundColor={item?.color}>
-          <View style={styles.headerDateTaskItem}>
-            <Text style={styles.dateTaskText}>{item?.title}</Text>
-            <MenuSVG color="#fff" />
-          </View>
-          <View style={styles.bodyDateTaskItem}>
-            <Text style={styles.descriptionDateTaskText}>{item?.subTitle}</Text>
-          </View>
-          <View style={styles.footerDateTaskItem}>
-            <View style={styles.rowContainer}>
-              <ClockSVG width={15} height={15} color="#fff" />
-              <Text style={styles.rowContainerText}>{item?.createdAt}</Text>
-            </View>
-
-            <View style={styles.rowContainer}>
-              <Image
-                style={styles.rowContainerAvatar}
-                source={{uri: item?.createdBy?.url}}
-              />
-              <Text style={styles.rowContainerText}>
-                {item?.createdBy?.name}
-              </Text>
-            </View>
-          </View>
-        </MyShadow>
-      </View>
-    </View>
-  );
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -194,7 +212,7 @@ export const TasksScreen = () => {
             contentContainerStyle={{
               paddingBottom: Math.max(insets.bottom, 16) + bottomTabHeight,
             }}
-            data={DATA2}
+            data={taskList?.data || []}
             renderItem={renderTaskItem}
             keyExtractor={(item, index) => `${item.id}` + index}
             showsVerticalScrollIndicator={false}

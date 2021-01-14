@@ -1,20 +1,36 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+import { postSignIn } from '../../services';
 import {styles} from './styles';
 import {MyTextInput, MyButton, MyText} from '../../components';
 import {PRIMARY_COLOR} from '../../constants';
 import {FacebookSVG, GoogleSVG} from './svgs';
+import {errorCodeState} from '../../atoms';
+import {useRecoilState} from 'recoil';
 
 export const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [pwd, setPwd] = useState('');
+  const [email, setEmail] = useState('0332530333');
+  const [pwd, setPwd] = useState('123123');
+  const [errorCode, setErrorCode] = useRecoilState(errorCodeState);
 
   const navigation = useNavigation();
 
-  const navigateHome = () => navigation.navigate('MyTabs');
+  const navigateHome = async () => {
+    const data = await postSignIn(
+      {
+        username: email,
+        password: pwd
+      },
+    );
+    data && navigation.navigate('MyTabs');
+  }
+
+  useEffect(() => {
+   console.log(errorCode) 
+  }, [errorCode])
 
   const navigateRegister = () => navigation.navigate('Register');
 
